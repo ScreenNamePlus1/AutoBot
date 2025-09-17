@@ -1,9 +1,10 @@
 Wanting to install local help? Train your own models? No problem. Here are the step-by-step instructions for installing Stable Diffusion and Gemma with Hugging Face, properly formatted with code blocks for readability and easy copying.
+**See notes*
 Part 1: Prerequisites
 Before you begin, you need to install a few essential tools.
  * Install Python 3.10.6:
    * Go to the official Python website.
-   * Download the Windows installer for the 64-bit version.
+   * Download the Windows installer for **the 64-bit version.*
    * Run the installer. On the first screen, make sure to check the box that says "Add Python to PATH".
    * Complete the installation.
  * Install Git for Windows:
