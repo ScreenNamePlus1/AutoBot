@@ -7,6 +7,8 @@ This project has three main files that work together:
  * monitor.py: The automation script. This script runs the bot, watches its terminal output for the special keywords, and then triggers a function to "perform an action."
 Step 1: The Target Program
 This program's code is slightly modified to change the values over time. This makes it more realistic for our automation script to detect changes.
+
+'''
 // Target.cpp
 #include <iostream>
 #include <windows.h>
@@ -45,7 +47,7 @@ int main() {
     }
     return 0;
 }
-
+'''
  * Action: Compile and run this program first. Keep it running and note the memory addresses.
 Step 2: The Bot Program
 This program now focuses solely on monitoring the Target.cpp program and outputting keywords. This makes the automation simpler, as the script only needs to read for specific text.
@@ -55,6 +57,7 @@ This program now focuses solely on monitoring the Target.cpp program and outputt
 #include <string>
 #include <vector>
 
+'''
 // --- Helper Functions (From previous examples) ---
 DWORD GetProcID(const wchar_t* windowName) {
     DWORD processID = 0;
@@ -120,10 +123,13 @@ int main(int argc, char* argv[]) {
     CloseHandle(hProcess);
     return 0;
 }
+'''
 
  * Action: Compile this program. Note that it now takes the addresses as command-line arguments. This makes it easy for our Python script to control it.
 Step 3: The Automation Script
 This is the central piece that orchestrates everything. We will use a Python script because it's excellent for running other programs, capturing their output, and performing actions based on that output.
+
+'''
 # monitor.py
 import subprocess
 import os
@@ -164,6 +170,7 @@ for line in iter(proc.stdout.readline, ''):
         handle_critical_health()
     else:
         print(f"Bot Output: {line}")
+'''
 
  * How it Works: The script uses subprocess.Popen to run Bot.exe. It then creates a loop that continuously reads lines from the bot's standard output (stdout). When it reads a line that matches "AMMO_LOW" or "HEALTH_CRITICAL," it calls the corresponding action function.
 Final Steps
@@ -172,6 +179,7 @@ Final Steps
  * Enter Addresses: The Python script will prompt you for the ammo and health addresses you got from Target.exe.
  * Watch the Magic: The script will now run the bot, which in turn will manipulate the target program. You'll see the values change in Target.exe's window, and the Python script will print messages to your terminal as it detects the changes and performs the automated actions.
 
+'''
 # Monitor drone communication protocols
 import scapy
 from scapy.all import *
@@ -182,8 +190,9 @@ def monitor_drone_traffic():
     for packet in packets:
         if packet.haslayer(UDP):
             print(f"UDP packet: {packet[UDP].sport} -> {packet[UDP].dport}")
+'''
 
-
+'''
 # Official drone programming methods
 from djitellopy import Tello
 import time
@@ -199,3 +208,4 @@ def automated_patrol():
     drone.rotate_clockwise(90)
     drone.move_forward(100)
     drone.land()
+'''
