@@ -1,5 +1,6 @@
 Wanting to install local help? Train your own models? No problem. Here are the step-by-step instructions for installing Stable Diffusion and Gemma with Hugging Face, properly formatted with code blocks for readability and easy copying.
 **See notes*
+
 Part 1: Prerequisites
 Before you begin, you need to install a few essential tools.
  * Install Python 3.10.6:
