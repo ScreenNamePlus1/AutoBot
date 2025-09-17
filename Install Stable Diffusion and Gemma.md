@@ -116,3 +116,11 @@ print(tokenizer.decode(outputs[0]))
 
    * The model will download, and after a moment, the response will be printed to your command prompt.
 
+---
+
+**Installing and running Stable Diffusion and Gemma on a 32-bit Windows machine is not officially supported and will likely not work due to hardware limitations. These models require a 64-bit operating system and a powerful GPU with a 64-bit architecture to run efficiently. The models themselves, as well as the PyTorch and diffusers libraries, are built for 64-bit systems.*
+
+---
+
+**​The previous instructions assumed a 64-bit Windows 11 installation, as Windows 11 is exclusively 64-bit. There is no official 32-bit version of Windows 11. Most modern deep learning frameworks, including the ones used by Hugging Face, are designed for the more common and powerful 64-bit hardware.
+​There are no separate 32-bit installation files or procedures because the necessary software stack does not exist for 32-bit machines.*
