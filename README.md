@@ -1,14 +1,20 @@
 # AutoBot
+
 Here is a complete, working example of a terminal game bot. This includes a Target.cpp program to simulate the game, a Bot.cpp program that monitors the target, and an automation script (monitor.py) that reads the bot's output and performs pre-selected actions.
-Project Structure
+
+## Project Structure
+
 This project has three main files that work together:
- * Target.cpp: The simulated game. It has variables for ammo and health that change over time.
- * Bot.cpp: The bot that connects to the target, reads its memory, and prints special keywords to the terminal when certain criteria are met.
- * monitor.py: The automation script. This script runs the bot, watches its terminal output for the special keywords, and then triggers a function to "perform an action."
-Step 1: The Target Program
+
+* **Target.cpp**: The simulated game. It has variables for ammo and health that change over time.
+* **Bot.cpp**: The bot that connects to the target, reads its memory, and prints special keywords to the terminal when certain criteria are met.
+* **monitor.py**: The automation script. This script runs the bot, watches its terminal output for the special keywords, and then triggers a function to "perform an action."
+
+## Step 1: The Target Program
+
 This program's code is slightly modified to change the values over time. This makes it more realistic for our automation script to detect changes.
 
-'''
+```cpp
 // Target.cpp
 #include <iostream>
 #include <windows.h>
@@ -47,17 +53,21 @@ int main() {
     }
     return 0;
 }
-'''
- * Action: Compile and run this program first. Keep it running and note the memory addresses.
-Step 2: The Bot Program
+```
+
+**Action**: Compile and run this program first. Keep it running and note the memory addresses.
+
+## Step 2: The Bot Program
+
 This program now focuses solely on monitoring the Target.cpp program and outputting keywords. This makes the automation simpler, as the script only needs to read for specific text.
+
+```cpp
 // Bot.cpp
 #include <iostream>
 #include <windows.h>
 #include <string>
 #include <vector>
 
-'''
 // --- Helper Functions (From previous examples) ---
 DWORD GetProcID(const wchar_t* windowName) {
     DWORD processID = 0;
@@ -123,13 +133,15 @@ int main(int argc, char* argv[]) {
     CloseHandle(hProcess);
     return 0;
 }
-'''
+```
 
- * Action: Compile this program. Note that it now takes the addresses as command-line arguments. This makes it easy for our Python script to control it.
-Step 3: The Automation Script
+**Action**: Compile this program. Note that it now takes the addresses as command-line arguments. This makes it easy for our Python script to control it.
+
+## Step 3: The Automation Script
+
 This is the central piece that orchestrates everything. We will use a Python script because it's excellent for running other programs, capturing their output, and performing actions based on that output.
 
-'''
+```python
 # monitor.py
 import subprocess
 import os
@@ -170,29 +182,37 @@ for line in iter(proc.stdout.readline, ''):
         handle_critical_health()
     else:
         print(f"Bot Output: {line}")
-'''
+```
 
- * How it Works: The script uses subprocess.Popen to run Bot.exe. It then creates a loop that continuously reads lines from the bot's standard output (stdout). When it reads a line that matches "AMMO_LOW" or "HEALTH_CRITICAL," it calls the corresponding action function.
-Final Steps
- * Run Target.exe: Make sure this program is running first.
- * Run monitor.py: From a terminal, navigate to your script's folder and run python monitor.py.
- * Enter Addresses: The Python script will prompt you for the ammo and health addresses you got from Target.exe.
- * Watch the Magic: The script will now run the bot, which in turn will manipulate the target program. You'll see the values change in Target.exe's window, and the Python script will print messages to your terminal as it detects the changes and performs the automated actions.
+**How it Works**: The script uses `subprocess.Popen` to run Bot.exe. It then creates a loop that continuously reads lines from the bot's standard output (stdout). When it reads a line that matches "AMMO_LOW" or "HEALTH_CRITICAL," it calls the corresponding action function.
 
-'''
+## Final Steps
+
+1. **Run Target.exe**: Make sure this program is running first.
+2. **Run monitor.py**: From a terminal, navigate to your script's folder and run `python monitor.py`.
+3. **Enter Addresses**: The Python script will prompt you for the ammo and health addresses you got from Target.exe.
+4. **Watch the Magic**: The script will now run the bot, which in turn will manipulate the target program. You'll see the values change in Target.exe's window, and the Python script will print messages to your terminal as it detects the changes and performs the automated actions.
+
+## Additional Examples
+
+### Network Traffic Monitoring
+
+```python
 # Monitor drone communication protocols
 import scapy
 from scapy.all import *
 
 def monitor_drone_traffic():
-# Capture packets on drone frequency bands
+    # Capture packets on drone frequency bands
     packets = sniff(iface="wlan0", count=100)
     for packet in packets:
         if packet.haslayer(UDP):
             print(f"UDP packet: {packet[UDP].sport} -> {packet[UDP].dport}")
-'''
+```
 
-'''
+### Official Drone Programming
+
+```python
 # Official drone programming methods
 from djitellopy import Tello
 import time
@@ -208,4 +228,4 @@ def automated_patrol():
     drone.rotate_clockwise(90)
     drone.move_forward(100)
     drone.land()
-'''
+```
