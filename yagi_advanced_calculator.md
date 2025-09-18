@@ -1,9 +1,3 @@
-def print_readme():
-    """
-    Prints the complete README file for the Yagi Antenna Calculator.
-    """
-    readme_text = """# Yagi Antenna Calculator
-
 This Python script is a tool for amateur radio enthusiasts and hobbyists who want to design a multi-element Yagi antenna. It calculates the optimal dimensions for the reflector, driven element, and a specified number of directors based on a desired radio frequency. The calculations assume you are using **14-gauge copper wire** and a **wooden dowel** for the boom.
 
 ---
