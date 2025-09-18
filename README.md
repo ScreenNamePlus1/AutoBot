@@ -1,4 +1,4 @@
-# AutoBot
+# Deceptecon-Omega
 
 Here is a complete, working example of a terminal game bot. This includes a Target.cpp program to simulate the game, a Bot.cpp program that monitors the target, and an automation script (monitor.py) that reads the bot's output and performs pre-selected actions.
 
