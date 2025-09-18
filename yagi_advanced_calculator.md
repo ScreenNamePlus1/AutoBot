@@ -1,8 +1,8 @@
 # Advanced Yagi Antenna Calculator
 
-**No, the calculator does not have explicit options for specifying whether the elements are isolated from the boom. It allows selection of boom material (including aluminum), which applies a fixed correction factor to element lengths (0.95 for aluminum, effectively shortening them by 5%). In the construction notes displayed with results, it explicitly recommends using non-conductive insulators to mount elements, implying that the design assumes isolation for optimal performance.
+**No, the calculator does not have explicit options for specifying whether the elements are isolated from the boom. It allows selection of boom material (including aluminum), which applies a fixed correction factor to element lengths (0.95 for aluminum, effectively shortening them by 5%). In the construction notes displayed with results, it explicitly recommends using non-conductive insulators to mount elements, implying that the design assumes isolation for optimal performance.*
 
-If elements are not isolated on an aluminum boom, the calculator will still run and provide dimensions, but the resulting antenna may not perform as expected (e.g., detuned resonance, reduced gain, or poor SWR). Standard Yagi design practices<grok:render card_id="b925fe" card_type="citation_card" type="render_inline_citation">
+**If elements are not isolated on an aluminum boom, the calculator will still run and provide dimensions, but the resulting antenna may not perform as expected (e.g., detuned resonance, reduced gain, or poor SWR). Standard Yagi design practices<grok:render card_id="b925fe" card_type="citation_card" type="render_inline_citation">
 <argument name="citation_id">1</argument>
 </grok:render><grok:render card_id="6630ed" card_type="citation_card" type="render_inline_citation">
 <argument name="citation_id">3</argument>
