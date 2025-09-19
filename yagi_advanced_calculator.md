@@ -200,4 +200,52 @@ For questions, bug reports, or feature requests, please open an issue on the rep
 
 ---
 
+# Yagi Antenna Calculator Launcher
+
+This script provides a user-friendly way to run the Yagi Antenna Calculator by using a button on your home screen. It uses a text-based menu to get user input before executing the main Python script.
+
+## How It Works
+
+1. A button on your home screen (created with Termux:Widget) runs this script.
+2. The script uses **'termux-dialog'** to display a list of options.
+3. Based on your selection, the script executes the appropriate function in your main Python program.
+
+---
+
+## Requirements
+
+* **Termux:Widget:** This add-on creates the home screen button.
+* **Termux:API:** This is the package that provides the 'termux-dialog' command.
+* **'jq':** A command-line JSON processor required to handle the output from 'termux-dialog'. Install it by running 'pkg install jq'.
+
+---
+
+## Installation & Usage
+
+Follow these steps to set up the script and widget.
+
+### Step 1: Place the Script
+
+Create the '~/.shortcuts' directory if it doesn't exist, and place the launcher script inside it.
+
+'mkdir -p ~/.shortcuts'
+
+### Step 2: Make the Script Executable
+
+Grant the script permission to be executed.
+
+'chmod +x ~/.shortcuts/yagi_launcher.sh'
+
+### Step 3: Add the Widget
+
+1. On your Android home screen, long-press an empty space.
+2. Select **Widgets**.
+3. Find **Termux:Widget** and drag it to your home screen.
+4. A list of scripts from your '~/.shortcuts' folder will appear. Tap the name of your script to create the button.
+
+Now you can tap the button on your home screen to launch the menu and select your desired calculation.
+
+---
+
 Happy antenna building!
+
