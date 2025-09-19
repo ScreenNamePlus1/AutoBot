@@ -206,29 +206,27 @@ This script provides a user-friendly way to run the Yagi Antenna Calculator by u
 
 ## Example Script
 
-'''bash
-#!/data/data/com.termux/files/usr/bin/bash
+    '''bash
+    #!/data/data/com.termux/files/usr/bin/bash
 
-# Define the options for the dialog
-OPTIONS="Calculate Boom Length\nCalculate Element Spacing\nExit"
+    # Define the options for the dialog
+    OPTIONS="Calculate Boom Length\nCalculate Element Spacing\nExit"
 
-# Show the dialog and capture the user's selection
-# The output is a JSON string, so we need to parse it
-SELECTION=$(termux-dialog list -t "Yagi Calculator Options" --items "$OPTIONS" | jq -r '.text')
+    # Show the dialog and capture the user's selection
+    # The output is a JSON string, so we need to parse it
+    SELECTION=$(termux-dialog list -t "Yagi Calculator Options" --items "$OPTIONS" | jq -r '.text')
 
-# Check the user's selection and run the appropriate Python function
-if [ "$SELECTION" == "Calculate Boom Length" ]; then
-    /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --boom-length
-elif [ "$SELECTION" == "Calculate Element Spacing" ]; then
-    /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --element-spacing
-elif [ "$SELECTION" == "Exit" ]; then
-    termux-toast "Exiting calculator."
-    exit 0
-else
-    termux-toast "Invalid option selected."
-fi
-
-'''
+    # Check the user's selection and run the appropriate Python function
+    if [ "$SELECTION" == "Calculate Boom Length" ]; then
+        /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --boom-length
+    elif [ "$SELECTION" == "Calculate Element Spacing" ]; then
+        /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --element-spacing
+    elif [ "$SELECTION" == "Exit" ]; then
+        termux-toast "Exiting calculator."
+        exit 0
+    else
+        termux-toast "Invalid option selected."
+    fi
 
 ---
 
