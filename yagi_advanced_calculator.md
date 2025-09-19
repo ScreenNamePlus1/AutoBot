@@ -227,7 +227,8 @@ elif [ "$SELECTION" == "Exit" ]; then
 else
     termux-toast "Invalid option selected."
 fi
-'''
+
+---
 
 ## How It Works
 
