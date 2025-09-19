@@ -207,7 +207,6 @@ This script provides a user-friendly way to run the Yagi Antenna Calculator by u
 ## Example Script
 
 '''bash
-
 #!/data/data/com.termux/files/usr/bin/bash
 
 # Define the options for the dialog
