@@ -204,6 +204,31 @@ For questions, bug reports, or feature requests, please open an issue on the rep
 
 This script provides a user-friendly way to run the Yagi Antenna Calculator by using a button on your home screen. It uses a text-based menu to get user input before executing the main Python script.
 
+## Example Script
+
+'''
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Define the options for the dialog
+OPTIONS="Calculate Boom Length\nCalculate Element Spacing\nExit"
+
+# Show the dialog and capture the user's selection
+# The output is a JSON string, so we need to parse it
+SELECTION=$(termux-dialog list -t "Yagi Calculator Options" --items "$OPTIONS" | jq -r '.text')
+
+# Check the user's selection and run the appropriate Python function
+if [ "$SELECTION" == "Calculate Boom Length" ]; then
+    /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --boom-length
+elif [ "$SELECTION" == "Calculate Element Spacing" ]; then
+    /data/data/com.termux/files/usr/bin/python ~/my_scripts/yagi_calculator.py --element-spacing
+elif [ "$SELECTION" == "Exit" ]; then
+    termux-toast "Exiting calculator."
+    exit 0
+else
+    termux-toast "Invalid option selected."
+fi
+'''
+
 ## How It Works
 
 1. A button on your home screen (created with Termux:Widget) runs this script.
@@ -234,7 +259,7 @@ Create the '~/.shortcuts' directory if it doesn't exist, and place the launcher 
 
 Grant the script permission to be executed.
 
-'chmod +x ~/.shortcuts/yagi_launcher.sh'
+'chmod +x ~/.shortcuts/yagi advanced calculator.py'
 
 ### Step 3: Add the Widget
 
